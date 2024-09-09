@@ -1,0 +1,46 @@
+### Post Item 요청 테스트 : 성공 케이스
+POST http://localhost:8080/post
+Content-Type: application/json
+
+{
+  "username": "안녕1",
+  "title": "test1",
+  "content": "test1",
+  "price": 0
+}
+
+
+### Get All Item 테스트 : 성공 케이스
+GET http://localhost:8080/post
+
+
+### Put Item 테스트 : 성공 케이스
+PUT http://localhost:8080/post/1
+Content-Type: application/json
+
+{
+  "username": "변경",
+  "title": "변경",
+  "content": "변경",
+  "price": 0
+}
+
+
+### Put Item 테스트 : 존재하지 않는 경우
+PUT http://localhost:8080/post/9999
+Content-Type: application/json
+
+{
+  "username": "변경",
+  "title": "변경",
+  "content": "변경",
+  "price": 0
+}
+
+
+### Delete Item 테스트  : 성공 케이스
+DELETE http://localhost:8080/post/1
+
+
+### Delete Item 테스트  : 존재하지 않는 경우
+DELETE http://localhost:8080/post/999
