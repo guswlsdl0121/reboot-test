@@ -4,10 +4,13 @@ import com.test.hanghae_reboot_test.dto.response.GetItemResponse;
 import com.test.hanghae_reboot_test.dto.response.PostItemRequest;
 import com.test.hanghae_reboot_test.dto.response.PostItemResponse;
 import com.test.hanghae_reboot_test.service.ItemService;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +47,11 @@ public class ItemController {
     public ResponseEntity<String> deletePost(@PathVariable Long id) {
         itemService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }
 
