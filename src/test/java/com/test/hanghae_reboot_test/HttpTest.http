@@ -3,9 +3,9 @@ POST http://localhost:8080/post
 Content-Type: application/json
 
 {
-  "username": "안녕1",
-  "title": "test1",
-  "content": "test1",
+  "username": "안녕",
+  "title": "생성",
+  "content": "생성",
   "price": 0
 }
 
